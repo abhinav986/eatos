@@ -22,7 +22,6 @@ import {PERFECT_SCROLLBAR_CONFIG} from 'ngx-perfect-scrollbar';
 import {PerfectScrollbarConfigInterface} from 'ngx-perfect-scrollbar';
 import {LaddaModule} from 'angular2-ladda';
 import {NgxLoadingModule} from 'ngx-loading';
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import {SweetAlert2Module} from '@toverux/ngx-sweetalert2';
 import {ToastrModule} from 'ngx-toastr';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
@@ -128,9 +127,11 @@ import {FooterMenuComponent} from './Layout/Components/footer/elements/footer-me
 // User Pages
 
 
-import {LoginComponent} from './UserPages/login/login.component';
-import {RegisterComponent} from './UserPages/register/register.component';
-import {ForgotPasswordComponent} from './UserPages/forgot-password/forgot-password.component';
+import {LoginComponent} from './LandingPages/login/login.component';
+import {RegisterComponent} from './LandingPages/register/register.component';
+import {ForgotPasswordComponent} from './LandingPages/forgot-password/forgot-password.component';
+
+import { UserPagesModule } from './user-pages/user-pages.module';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -179,7 +180,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     // User Pages
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
 
   ],
   imports: [
@@ -207,7 +208,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     ReactiveFormsModule,
     NgBootstrapFormValidationModule.forRoot(),
     NgxLoadingModule.forRoot({}),
-    RoundProgressModule,
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',
@@ -278,7 +278,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     MatSortModule,
     MatPaginatorModule,
     MatTreeModule,
-    MatRippleModule
+    MatRippleModule,
+    UserPagesModule
   ],
   providers: [
     {
