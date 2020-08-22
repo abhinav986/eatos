@@ -8,18 +8,17 @@ import { UserPagesComponent } from './user-pages/user-pages.component';
 import { UserProfileComponent } from './user-pages/user-profile/user-profile.component';
 // User Pages
 
-import {LoginComponent} from './LandingPages/login/login.component';
-import {RegisterComponent} from './LandingPages/register/register.component';
-import {ForgotPasswordComponent} from './LandingPages/forgot-password/forgot-password.component';
+import {LoginComponent} from './LandingPages/components/login/login.component';
+import {RegisterComponent} from './LandingPages/components/register/register.component';
+import {ForgotPasswordComponent} from './LandingPages/components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BaseLayoutComponent,
     children: [
-
    //   {path: 'material/tooltip', component: TooltipComponent, data: {extraParameter: 'materialButtonsIndicators'}},
-        {path: '', component: LoginComponent, data: {extraParameter: ''}}
+
   ]
 
   },
@@ -32,7 +31,8 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent, data: {extraParameter: ''}},
       {path: 'register', component: RegisterComponent, data: {extraParameter: ''}},
       {path: 'forgot-password', component: ForgotPasswordComponent, data: {extraParameter: ''}},
-      {path: 'eatos', loadChildren: './user-pages/user-pages.module#UserPagesModule'},
+      {path: 'user-pages', loadChildren: './user-pages/user-pages.module#UserPagesModule'},
+      {path: 'home', loadChildren: './home/home.module#HomeModule'},
     ]
   },
   {path: '**', redirectTo: ''}
