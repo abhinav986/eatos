@@ -17,8 +17,9 @@ const routes: Routes = [
     path: '',
     component: BaseLayoutComponent,
     children: [
-   //   {path: 'material/tooltip', component: TooltipComponent, data: {extraParameter: 'materialButtonsIndicators'}},
-
+    {path: '', loadChildren: './home/home.module#HomeModule' , data: {extraParameter: ''}},
+    {path: 'home', loadChildren: './home/home.module#HomeModule' , data: {extraParameter: ''}},
+    {path: 'user-pages', loadChildren: './user-pages/user-pages.module#UserPagesModule', data: {extraParameter: ''}},
   ]
 
   },
@@ -31,11 +32,10 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent, data: {extraParameter: ''}},
       {path: 'register', component: RegisterComponent, data: {extraParameter: ''}},
       {path: 'forgot-password', component: ForgotPasswordComponent, data: {extraParameter: ''}},
-      {path: 'user-pages', loadChildren: './user-pages/user-pages.module#UserPagesModule'},
-      {path: 'home', loadChildren: './home/home.module#HomeModule'},
     ]
   },
-  {path: '**', redirectTo: ''}
+
+   {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

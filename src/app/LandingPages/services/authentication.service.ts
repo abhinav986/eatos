@@ -33,6 +33,7 @@ export class AuthenticationService {
 
   createUserProfile(body) {
     console.log(body);
+    // please add user_id
     return this.http.post(this.baseUrl + this.userProfileUrl, body);
   }
 
