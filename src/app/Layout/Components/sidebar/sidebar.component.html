@@ -22,7 +22,7 @@
                   <div class="vsm-header">Menu</div>
                 </ng-template>
               </ngb-panel>
-              <ngb-panel id="dashboardsMenu">
+              <ngb-panel id="mypagesMenu">
                 <ng-template ngbPanelHeader>
                   <button ngbPanelToggle class="vsm-link">
                     <i class="vsm-icon pe-7s-rocket"></i>
@@ -32,26 +32,13 @@
                 </ng-template>
                 <ng-template ngbPanelContent>
                   <div class="vsm-dropdown">
-                    <div class="vsm-list">
-                      <div class="vsm-item"><a routerLink="" routerLinkActive="active-item"
-                                               [routerLinkActiveOptions]="{exact: true}" class="vsm-link"><span
-                        class="vsm-title">My Profile</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLink="/myblogs" routerLinkActive="active-item" class="vsm-link"><span
-                          class="vsm-title">My Blogs</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLink="/myrecipes" routerLinkActive="active-item" class="vsm-link"><span
-                          class="vsm-title">My Recipes</span></a>
-                      </div>
-
-                      <div class="vsm-item">
-                        <a routerLink="/myanalytics" routerLinkActive="active-item" class="vsm-link"><span
-                          class="vsm-title">My Analytics</span></a>
-                      </div>
-
-                    </div>
+                  <div class="vsm-list" >
+                      <div class="vsm-item" *ngFor="let menu of myPages">
+                        <a routerLink="{{menu.path}}" routerLinkActive="active-item"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        class="vsm-link"><span class="vsm-title">{{menu.title}}</span></a>
+                     </div>
+                  </div>
                   </div>
                 </ng-template>
               </ngb-panel>
@@ -66,20 +53,11 @@
                 <ng-template ngbPanelContent>
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
-                      <div class="vsm-item"><a routerLinkActive="active-item" routerLink="/pages/login"
-                        class="vsm-link"><span
-                        class="vsm-title">Create Blog</span></a></div>
-                      <div class="vsm-item"><a routerLinkActive="active-item" routerLink="/pages/login"
-                                               class="vsm-link"><span
-                        class="vsm-title">Top Bloggers</span></a></div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/login-boxed" class="vsm-link"><span
-                          class="vsm-title">Trending Blogs</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">My Location Blogs</span></a>
-                      </div>
+                      <div class="vsm-item" *ngFor="let menu of blogs">
+                        <a routerLink="{{menu.path}}" routerLinkActive="active-item"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        class="vsm-link"><span class="vsm-title">{{menu.title}}</span></a>
+                     </div>
 
                     </div>
                   </div>
@@ -96,46 +74,11 @@
                 <ng-template ngbPanelContent>
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/mailbox" class="vsm-link"><span
-                          class="vsm-title">Create Recipe</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/mailbox" class="vsm-link"><span
-                          class="vsm-title">Top Chefs</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/chat" class="vsm-link"><span
-                          class="vsm-title">Trending Recipes</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Breakfast</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Lunch</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Dinner</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Desert</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Drinks</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Quick Bites</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Healthy</span></a>
-                      </div>
+                      <div class="vsm-item" *ngFor="let menu of recipes">
+                        <a routerLink="{{menu.path}}" routerLinkActive="active-item"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        class="vsm-link"><span class="vsm-title">{{menu.title}}</span></a>
+                     </div>
                     </div>
                   </div>
                 </ng-template>
@@ -151,46 +94,11 @@
                 <ng-template ngbPanelContent>
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
-                      <div class="vsm-item"><a routerLinkActive="active-item" routerLink="/pages/login"
-                                               class="vsm-link"><span
-                        class="vsm-title">Top Resturants</span></a></div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/login-boxed" class="vsm-link"><span
-                          class="vsm-title">Trending Resturants</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">My Location Resturants</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Fine Dining</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Casual Dining</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Family Style</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Fast Food</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Cafe</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Buffet</span></a>
-                      </div>
-
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/pages/register" class="vsm-link"><span
-                          class="vsm-title">Street Food</span></a>
-                      </div>
+                      <div class="vsm-item" *ngFor="let menu of resturants">
+                        <a routerLink="{{menu.path}}" routerLinkActive="active-item"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        class="vsm-link"><span class="vsm-title">{{menu.title}}</span></a>
+                     </div>
 
                     </div>
                   </div>
@@ -207,42 +115,11 @@
                 <ng-template ngbPanelContent>
                   <div class="vsm-dropdown">
                     <div class="vsm-list">
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/mailbox" class="vsm-link"><span
-                          class="vsm-title">Indian</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/chat" class="vsm-link"><span
-                          class="vsm-title">Italian</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Thai</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Chinese</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Greek</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Japanese</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">French</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">Spanish</span></a>
-                      </div>
-                      <div class="vsm-item">
-                        <a routerLinkActive="active-item" routerLink="/apps/material-tabs" class="vsm-link"> <span
-                          class="vsm-title">English</span></a>
-                      </div>
+                      <div class="vsm-item" *ngFor="let menu of cusines">
+                        <a routerLink="{{menu.path}}" routerLinkActive="active-item"
+                        [routerLinkActiveOptions]="{exact: true}"
+                        class="vsm-link"><span class="vsm-title">{{menu.title}}</span></a>
+                     </div>
                     </div>
                   </div>
                 </ng-template>
@@ -250,25 +127,28 @@
 
               <ngb-panel id="mealMenu">
                 <ng-template ngbPanelHeader>
-                  <button  class="vsm-link">
+                  <button  class="vsm-link" routerLink="{{mealPlanner.path}}"
+                  routerLinkActive="active-item">
                     <i class="vsm-icon pe-7s-browser"></i>
-                    <span class="vsm-title">Meal Planner</span>
+                    <span class="vsm-title">{{mealPlanner.title}}</span>
                   </button>
                 </ng-template>
                 </ngb-panel>
               <ngb-panel id="promoMenu">
                 <ng-template ngbPanelHeader>
-                  <button  class="vsm-link">
+                  <button  class="vsm-link" routerLink="{{requestPromo.path}}"
+                  routerLinkActive="active-item">
                     <i class="vsm-icon pe-7s-browser"></i>
-                    <span class="vsm-title">Request for promo</span>
+                    <span class="vsm-title">{{requestPromo.title}}</span>
                   </button>
                 </ng-template>
                 </ngb-panel>
                 <ngb-panel id="contactMenu">
                   <ng-template ngbPanelHeader>
-                    <button  class="vsm-link">
+                    <button  class="vsm-link" routerLink="{{contactUs.path}}"
+                    routerLinkActive="active-item">
                       <i class="vsm-icon pe-7s-browser"></i>
-                      <span class="vsm-title">Contact Us</span>
+                      <span class="vsm-title">{{contactUs.title}}</span>
                     </button>
                   </ng-template>
                   </ngb-panel>
