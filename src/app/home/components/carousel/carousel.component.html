@@ -1,0 +1,20 @@
+<div class="card main-card mb-3">
+  <div class="card-body">
+    <h4 class="card-title">{{title}}</h4>
+    <ngx-slick-carousel class="slick-slider slick-dotted" #slickModal="slick-carousel"
+                        [config]="slideConfig3">
+      <div ngxSlickItem *ngFor="let data of recipes" style="padding:10px;">
+         <div class="main-card mb-3 card">
+            <div class="card-body" style="padding: 0%;">
+             <img [src]="data.coverImage" style="width: 100%;height:150px;" />
+            </div>
+            <div class="d-block card-footer">
+              <h6 class="title">{{data.title}}</h6>
+              <span>{{data.user}}</span>
+              <span style="float:right;">{{data.views}} views</span>
+            </div>
+          </div>
+      </div>
+    </ngx-slick-carousel>
+  </div>
+</div>

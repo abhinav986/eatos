@@ -1,47 +1,4 @@
-<ngb-tabset class="tabs-animated tabs-animated-shadow">
-  <ngb-tab>
-    <ng-template ngbTabTitle><span>Trending Recipes</span></ng-template>
-    <ng-template ngbTabContent>
-      <div class="row">
-        <div class="col-md-4" *ngFor="let data of datas;">
-          <div class="main-card mb-3 card">
-            <div class="card-body" style="padding: 0%;">
 
-             <img [src]="data.coverImage" style="width: 100%;height:160px;" />
+  <app-carousel></app-carousel>
 
-              </div>
-            <div class="d-block text-right card-footer">
-              <h6>{{data.title}}</h6>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </ng-template>
-  </ngb-tab>
-  <ngb-tab>
-    <ng-template ngbTabTitle><span>Trending Blogs</span></ng-template>
-    <ng-template ngbTabContent>
-      <div class="row">
-        <div class="col-md-4" *ngFor="let data of datas;">
-          <div class="main-card mb-3 card">
-            <div class="card-body" style="padding: 0%;">
-
-             <img [src]="data.coverImage" style="width: 100%;height:160px;" />
-
-              </div>
-            <div class="d-block text-right card-footer">
-              <h6>{{data.title}}</h6>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-
-    </ng-template>
-  </ngb-tab>
-
-  </ngb-tabset>
+  <app-card></app-card>
