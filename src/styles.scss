@@ -1,10 +1,27 @@
 @import "assets/base";
 
-body{
-  overflow: hidden;
+// body{
+//   overflow: hidden;
+// }
+// .vsm-list{
+//   height: 150px !important;
+// }
+
+.title{
+    font-size: 1.2rem !important;
+    line-height: 1.5rem;
+    max-height: 4rem;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-weight: bold;
 }
-.vsm-list{
-  height: 300px !important;
+
+.page-title{
+  font-weight: 600;
+}
+
+.v-sidebar-menu .vsm-title {
+  font-weight: 600;
 }
 
 html, body { height: 100%; }

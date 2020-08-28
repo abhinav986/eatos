@@ -1,0 +1,67 @@
+<ngb-tabset class="tabs-animated tabs-animated-shadow">
+  <ngb-tab>
+    <ng-template ngbTabTitle><span>All</span></ng-template>
+    <ng-template ngbTabContent>
+      <div class="row">
+        <div class="col-md-3 col-6" *ngFor="let data of datas;">
+          <div class="main-card mb-3 card">
+            <div class="card-body" style="padding: 0%;">
+             <img [src]="data.coverImage" style="width: 100%;height:150px;" />
+            </div>
+            <div class="d-block card-footer">
+              <h6 class="title">{{data.title}}</h6>
+              <span>{{data.user}}</span>
+              <span style="float:right;">{{data.views}} views</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><span>Trending Recipes</span></ng-template>
+    <ng-template ngbTabContent>
+      <div class="row">
+        <div class="col-md-3 col-6" *ngFor="let data of recipes;">
+          <div class="main-card mb-3 card">
+            <div class="card-body" style="padding: 0%;">
+             <img [src]="data.coverImage" style="width: 100%;height:150px;" />
+            </div>
+            <div class="d-block card-footer">
+              <h6 class="title">{{data.title}}</h6>
+              <span>{{data.user}}</span>
+              <span style="float:right;">{{data.views}} views</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab>
+    <ng-template ngbTabTitle><span>Trending Blogs</span></ng-template>
+    <ng-template ngbTabContent>
+      <div class="row">
+        <div class="col-md-3 col-6" *ngFor="let data of blogs;">
+          <div class="main-card mb-3 card">
+            <div class="card-body" style="padding: 0%;">
+             <img [src]="data.coverImage" style="width: 100%;height:150px;" />
+            </div>
+            <div class="d-block card-footer">
+              <h6 class="title">{{data.title}}</h6>
+              <span>{{data.user}}</span>
+              <span style="float:right;">{{data.views}} views</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </ng-template>
+  </ngb-tab>
+
+  </ngb-tabset>

@@ -126,12 +126,13 @@ import {FooterMenuComponent} from './Layout/Components/footer/elements/footer-me
 // User Pages
 
 
-import {LoginComponent} from './LandingPages/login/login.component';
-import {RegisterComponent} from './LandingPages/register/register.component';
-import {ForgotPasswordComponent} from './LandingPages/forgot-password/forgot-password.component';
+import {LoginComponent} from './LandingPages/components/login/login.component';
+import {RegisterComponent} from './LandingPages/components/register/register.component';
+import {ForgotPasswordComponent} from './LandingPages/components/forgot-password/forgot-password.component';
 
+import { SharedModule } from './shared/shared.module';
 import { UserPagesModule } from './user-pages/user-pages.module';
-
+import { HomeModule } from './home/home.module';
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
@@ -277,7 +278,9 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     MatPaginatorModule,
     MatTreeModule,
     MatRippleModule,
-    UserPagesModule
+    SharedModule,
+    UserPagesModule,
+    HomeModule
   ],
   providers: [
     {

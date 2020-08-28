@@ -5,18 +5,18 @@ import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
 import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component';
 // User Pages
 
-import {LoginComponent} from './LandingPages/login/login.component';
-import {RegisterComponent} from './LandingPages/register/register.component';
-import {ForgotPasswordComponent} from './LandingPages/forgot-password/forgot-password.component';
+import {LoginComponent} from './LandingPages/components/login/login.component';
+import {RegisterComponent} from './LandingPages/components/register/register.component';
+import {ForgotPasswordComponent} from './LandingPages/components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {
     path: '',
     component: BaseLayoutComponent,
     children: [
-
-   //   {path: 'material/tooltip', component: TooltipComponent, data: {extraParameter: 'materialButtonsIndicators'}},
-        {path: '', component: LoginComponent, data: {extraParameter: ''}}
+    {path: '', loadChildren: './home/home.module#HomeModule' , data: {extraParameter: ''}},
+    {path: 'home', loadChildren: './home/home.module#HomeModule' , data: {extraParameter: ''}},
+    {path: 'user-pages', loadChildren: './user-pages/user-pages.module#UserPagesModule', data: {extraParameter: ''}},
   ]
 
   },
@@ -29,10 +29,10 @@ const routes: Routes = [
       {path: 'login', component: LoginComponent, data: {extraParameter: ''}},
       {path: 'register', component: RegisterComponent, data: {extraParameter: ''}},
       {path: 'forgot-password', component: ForgotPasswordComponent, data: {extraParameter: ''}},
-      {path: 'eatos', loadChildren: './user-pages/user-pages.module#UserPagesModule'},
     ]
   },
-  {path: '**', redirectTo: ''}
+
+   {path: '**', redirectTo: ''}
 ];
 
 @NgModule({

@@ -3,7 +3,7 @@ import {ThemeOptions} from '../../../theme-options';
 import {select} from '@angular-redux/store';
 import {Observable} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
-
+import { menuItems } from './sidebar-routes.config';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -20,6 +20,15 @@ export class SidebarComponent implements OnInit {
   private newInnerWidth: number;
   private innerWidth: number;
   activeId = 'dashboardsMenu';
+  myPages: any = [];
+  blogs: any = [];
+  recipes: any = [];
+  resturants: any = [];
+  cusines: any = [];
+  mealPlanner: any = {};
+  requestPromo: any = {};
+  contactUs: any = {};
+
 
   toggleSidebar() {
     this.globals.toggleSidebar = !this.globals.toggleSidebar;
@@ -38,6 +47,17 @@ export class SidebarComponent implements OnInit {
     });
 
     this.extraParameter = this.activatedRoute.snapshot.firstChild.data.extraParameter;
+
+    this.myPages = menuItems.myPages;
+    this.blogs = menuItems.blogs;
+    this.recipes = menuItems.recipes;
+    this.resturants = menuItems.resturants;
+    this.cusines = menuItems.cusines;
+    this.mealPlanner = menuItems.mealPlanner;
+    this.requestPromo = menuItems.requestPromo;
+    this.contactUs = menuItems.contactUs;
+
+
 
   }
 
