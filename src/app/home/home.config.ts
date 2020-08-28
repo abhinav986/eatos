@@ -30,4 +30,11 @@ export const homeItems = {
     {title: 'Noddles', coverImage: '../../../../assets/images/food/food10.jpg', views: '550', user: 'Vinnet'},
     {title: 'Kabab', coverImage: '../../../../assets/images/food/food2.jpg', views: '2400', user: 'Hrpal'}],
 
+    chef: [{name: 'Ranveer Barar', image: '../../../../assets/images/chef/chef1.jpg'},
+    {name: 'Sanjeev Kapoor', image: '../../../../assets/images/chef/chef2.jpg'},
+    {name: 'Vikas Khana', image: '../../../../assets/images/chef/chef3.jpg'},
+    {name: 'Kunal Kappor', image: '../../../../assets/images/chef/chef4.jpg'},
+    {name: 'Vineet Bhatia', image: '../../../../assets/images/chef/chef5.jpg'},
+    {name: 'Harpal Sodhi', image: '../../../../assets/images/chef/chef5.jpg'}]
+
 };
