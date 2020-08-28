@@ -1,0 +1,153 @@
+
+<div class="row">
+<div class="col-8">
+  <h1 style="font-weight:600;">{{recipeDetails?.title}}</h1>
+  <h6 >Its a famous south indian dish</h6>
+  <h6 class="info"><span> <img class="card-image"
+    src="../../../../assets/images/chef/chef1.jpg" style="width: 40px;border-radius: 20px;" />
+    Chef {{recipeDetails?.user}}</span></h6>
+</div>
+  <div class="col-4">
+    <div class="card-body text-right" >
+      <ng-template #t let-fill="fill" >
+        <span class="star2" [class.full]="fill === 100" placement="top" ngbTooltip="{{rating}} Stars">
+          <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+        </span>
+      </ng-template>
+      <ngb-rating [(rate)]="rating" [starTemplate]="t" [readonly]="true" max="5"></ngb-rating>
+
+      <h6 class="info"> {{recipeDetails?.views}} reviews</h6>
+    </div>
+  </div>
+</div>
+
+<div class="main-card mb-3 card">
+<div class="row">
+<div class="col-8">
+<!-- <img class="card-image" src="../../../../assets/images/food/food1.jpg" /> -->
+<!-- <youtube-player
+  videoId="dQw4w9WgXcQ"
+  suggestedQuality="highres"
+  [startSeconds]="43"
+  [height]="300"
+  [width]="500">
+</youtube-player> -->
+<youtube-player videoId="{{recipeDetails?.youtubeVideoId}}"></youtube-player>
+</div>
+<div class="col-4">
+  <div class="grid-menu grid-menu-xl grid-menu-3col">
+    <div class="no-gutters row">
+      <div class="col-sm-6 ">
+        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+          <i class="fa fa-clock-o icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
+          Preparation Time <br> {{recipeDetails?.prepTime}} mins
+        </button>
+      </div>
+      <div class="col-sm-6 ">
+        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+          <i class="fa fa-clock-o icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
+          Cooking Time <br> {{recipeDetails?.cookTime}} mins
+        </button>
+      </div>
+      <div class="col-sm-6 " style="border-right-width: 1px;">
+        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+          <i class="fa fa-hourglass-o icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
+          Total Time <br> {{recipeDetails?.totalTime }}  mins
+        </button>
+      </div>
+      <div class="col-sm-6 " style="border-bottom-width: 1px;">
+        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+          <i class="fa fa-users icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
+          Serving For <br> {{recipeDetails?.serve}}
+        </button>
+      </div>
+      <div class="col-sm-6 " >
+        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+          <i class="fa fa-leaf icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
+          Cusine <br> {{recipeDetails?.cusine}}
+        </button>
+      </div>
+      <div class="col-sm-6 ">
+        <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
+          <i class="fa fa-cutlery icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
+          Course <br> {{recipeDetails?.category}}
+        </button>
+      </div>
+    </div>
+  </div>
+
+<!-- <h6 class="info">Preparation time: 30 mins </h6>
+<h6 class="info">Cooking time: 20 mins</h6>
+<h6 class="info">Total Time: 50 mins </h6>
+<h6 class="info">Serve For: 2 </h6>
+<h6 class="info">Cusine: Indian </h6>
+<h6 class="info">Course: Main Course</h6>
+<h6 class="info">For: Breakfast</h6> -->
+</div>
+</div>
+</div>
+
+<!-- Ingridients Start -->
+<h4 class="title col-12 mb-2" style="cursor: pointer;"
+    (click)="isIngridientCollapsed = !isIngridientCollapsed"
+    [attr.aria-expanded]="!isIngridientCollapsed"
+    aria-controls="collapseIngridient">
+    <i *ngIf="!isDirectionCollapsed" class="fa fa-chevron-up"></i>
+    <i *ngIf="isDirectionCollapsed" class="fa fa-chevron-down"></i>
+    Ingredients</h4>
+
+<div id="collapseIngridient"  [ngbCollapse]="isIngridientCollapsed">
+<div class="main-card mb-3 card">
+  <div class="row p-3">
+    <div class="col-12 mt-3" *ngFor="let data of recipeDetails?.ingredients;">
+      <div class="custom-checkbox custom-control custom-control-inline">
+        <input type="checkbox" class="custom-control-input">
+        <label  class="custom-control-label info">{{data}}</label></div>
+
+    </div>
+   </div>
+ </div>
+</div>
+ <!-- Ingridients End -->
+
+
+<!-- Directions Start -->
+    <h4 class="title col-12 mb-2" style="cursor: pointer;"
+    (click)="isDirectionCollapsed = !isDirectionCollapsed"
+    [attr.aria-expanded]="!isDirectionCollapsed"
+    aria-controls="collapseDirection">
+    <i *ngIf="!isDirectionCollapsed" class="fa fa-chevron-up"></i>
+    <i *ngIf="isDirectionCollapsed" class="fa fa-chevron-down"></i>
+    Directions</h4>
+
+    <div id="collapseDirection"  [ngbCollapse]="isDirectionCollapsed">
+    <div class="main-card mb-2 card" *ngFor="let data of recipeDetails?.steps;let i=index;">
+      <div class="row">
+        <div class="col-4">
+          <img class="card-image" src="http://localhost:3000/v1/upload/food{{i+1}}.jpg" />
+          </div>
+          <div class="col-8">
+          <h6 class="info"> <i class="fa fa-check-circle"></i> STEP {{i+1}}</h6>
+          <h6 class="info">{{data}}</h6>
+          </div>
+    </div>
+   </div>
+  </div>
+  <!-- Directions End -->
+
+  <!-- Nutritions Start -->
+  <h4 class="title col-12 mb-2" style="cursor: pointer;"
+    (click)="isNutritionCollapsed = !isNutritionCollapsed"
+    [attr.aria-expanded]="!isNutritionCollapsed"
+    aria-controls="collapseNutrition">
+    <i *ngIf="!isNutritionCollapsed" class="fa fa-chevron-up"></i>
+    <i *ngIf="isNutritionCollapsed" class="fa fa-chevron-down"></i>
+    Nutritions</h4>
+  <div class="row mb-3" id="collapseNutrition"  [ngbCollapse]="isNutritionCollapsed">
+    <div class="col-2 card round-div" *ngFor="let data of recipeDetails?.nutrition;">
+      <h6 class="info">{{data.param}}</h6>
+      <h6>{{data.value}}</h6>
+    </div>
+  </div>
+ <!-- Nutritions End -->
+

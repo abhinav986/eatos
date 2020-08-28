@@ -1,0 +1,56 @@
+.btn-icon-lg {
+  font-size: 2rem !important;
+}
+
+.btn-icon-vertical .btn-icon-wrapper {
+  opacity: 1 !important;
+}
+
+.bg-night-fade {
+  background-image: linear-gradient(to top, green, lightgreen 100%) !important;
+}
+
+.round-div{
+  height: 160px;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.star {
+  font-size: 2rem;
+  color: lightgray;
+}
+
+.filled {
+  color:green;
+}
+
+.bad {
+  color: green;
+}
+
+.filled.bad {
+  color:green;
+}
+
+.star2 {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: lightgray;
+}
+
+.full {
+  color: cyan;
+}
+
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: green;
+}

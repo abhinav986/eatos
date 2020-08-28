@@ -18,4 +18,9 @@ export class RecipesService {
     return this.http.post(this.endPoints.baseUrl + this.endPoints.recipeFilterUrl, body);
   }
 
+  // get recipe details by recipeId
+  getRecipeById(recipeId) {
+    return this.http.get(this.endPoints.baseUrl + this.endPoints.recipesUrl + '/' + recipeId);
+  }
+
 }
