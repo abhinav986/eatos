@@ -1,7 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgReduxModule} from '@angular-redux/store';
 import {NgRedux, DevToolsExtension} from '@angular-redux/store';
 import {rootReducer, ArchitectUIState} from './ThemeOptions/store';
@@ -48,7 +47,7 @@ import {DropzoneConfigInterface} from 'ngx-dropzone-wrapper';
 import {ChartsModule} from 'ng2-charts';
 
 // ANGULAR MATERIAL COMPONENTS
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCheckboxModule, MatRippleModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material';
 import {MatInputModule} from '@angular/material/input';
@@ -191,7 +190,6 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     NgReduxModule,
     CommonModule,
     LoadingBarRouterModule,
-
     // Charts
 
     ChartsModule,

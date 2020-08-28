@@ -1,0 +1,29 @@
+.align-items-center {
+    justify-content: center;
+}
+
+.rounded-circle {
+    height: 5rem;
+    width: 5rem;
+    margin: 1rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    top: 4rem;
+    left: 5rem;
+    text-decoration: underline;
+}
+
+.profile-pic {
+    position: relative;
+}
+
+::ng-deep .mat-tab-labels{
+    justify-content: space-around !important;
+}

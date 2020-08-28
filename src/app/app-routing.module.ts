@@ -3,9 +3,6 @@ import {Routes, RouterModule} from '@angular/router';
 
 import {BaseLayoutComponent} from './Layout/base-layout/base-layout.component';
 import {PagesLayoutComponent} from './Layout/pages-layout/pages-layout.component';
-import {AppsLayoutComponent} from './Layout/apps-layout/apps-layout.component';
-import { UserPagesComponent } from './user-pages/user-pages.component';
-import { UserProfileComponent } from './user-pages/user-profile/user-profile.component';
 // User Pages
 
 import {LoginComponent} from './LandingPages/components/login/login.component';
