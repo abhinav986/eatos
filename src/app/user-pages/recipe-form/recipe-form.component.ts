@@ -9,27 +9,26 @@ import {FormGroup, FormControl, Validators} from '@angular/forms';
 export class RecipeFormComponent implements OnInit {
   toppings = new FormControl();
   toppingList: string[] = ['Extra cheese', 'Mushroom', 'Onion', 'Pepperoni', 'Sausage', 'Tomato'];
-  
+
   formGroup = new FormGroup({
-    name: new FormControl('', Validators.required),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', Validators.required),
-    confirmPassword: new FormControl('', Validators.required),
-    agreeToTerms: new FormControl(false, Validators.required),
+    title: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    serveFor: new FormControl('', Validators.required),
+    preparationTime: new FormControl('', Validators.required),
   });
 
-  slideConfig2 = {
-    className: 'center',
-    centerMode: true,
-    infinite: true,
-    centerPadding: '0',
-    slidesToShow: 1,
-    speed: 500,
-    dots: false,
-  };
   constructor() { }
 
   ngOnInit() {
   }
 
+  saveRecipe() {
+    const data = {
+      title: this.formGroup.controls.title.value,
+      description: this.formGroup.controls.description.value,
+      serveFor: this.formGroup.controls.serveFor.value,
+      preparationTime: this.formGroup.controls.preparationTime.value,
+    };
+    console.log(data);
+  }
 }

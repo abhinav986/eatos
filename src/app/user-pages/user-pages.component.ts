@@ -8,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 export class UserPagesComponent implements OnInit {
 
   /**
-   * Check user profile edit state
+   * Check recipe edit state
    */
   isRecipeForm = false;
+
+  /**
+   * Check blog edit state
+   */
+  isBlogForm = false;
 
   /**
    * Profile picture url
@@ -36,5 +41,9 @@ export class UserPagesComponent implements OnInit {
 
   recipeFormEvent(event) {
     this.isRecipeForm = event;
+  }
+
+  blogFormEvent(event) {
+    this.isBlogForm = event;
   }
 }

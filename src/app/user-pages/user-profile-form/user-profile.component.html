@@ -2,7 +2,7 @@
   <div class="h-100">
     <div class="row h-100 no-gutters">
       <div class="h-100 d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-8">
-        <div class="mx-auto app-login-box col-sm-12 col-md-10">
+        <div class="mx-auto app-login-box col-sm-12">
           <div class="profile-update">
             <div class="d-flex">
               <div>
@@ -12,7 +12,7 @@
                 </h4>
               </div>
               <div class="ml-auto">
-                <button type="submit" class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
+                <button type="submit" (click)="saveProfile()" class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
                 </button>
               </div>
             </div>
@@ -28,7 +28,7 @@
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom01">Name</label>
                   <input formControlName="name" type="text" class="form-control" id="validationCustom01"
-                    placeholder="First Name" value="Mark" required>
+                    placeholder="Name" value="Mark" required>
                 </div>
 
                 <div class="col-md-6 mb-3 form-group">
@@ -41,13 +41,13 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustomUsername">Mobile Number</label>
-                  <input formControlName="email" type="email" class="form-control" id="validationCustom02"
+                  <input formControlName="mobile" type="Number" class="form-control" id="validationCustom02"
                     placeholder="Mobile Number" aria-describedby="inputGroupPrepend">
                 </div>
                 <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Select City</mat-label>
-                    <mat-select>
+                    <mat-select fromControlName="city">
                       <mat-option value="option">Option</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -58,7 +58,7 @@
                 <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Select State</mat-label>
-                    <mat-select>
+                    <mat-select fromControlName="state">
                       <mat-option value="option">Option</mat-option>
                     </mat-select>
                   </mat-form-field>
@@ -66,8 +66,10 @@
                 <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Select Country</mat-label>
-                    <mat-select>
-                      <mat-option value="option">Option</mat-option>
+                    <mat-select fromControlName="country">
+                      <mat-option *ngFor="let pos of toppingList" [value]="pos">
+                        {{pos}}
+                      </mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -76,7 +78,7 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom03">Pincode</label>
-                  <input formControlName="password" type="text" class="form-control" id="validationCustom03"
+                  <input formControlName="pincode" type="text" class="form-control" id="validationCustom03"
                     placeholder="Pincode" required>
                 </div>
               </div>
@@ -88,12 +90,12 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom04">Instagram Link</label>
-                  <input formControlName="confirmPassword" type="text" class="form-control" id="validationCustom04"
+                  <input formControlName="instagram" type="text" class="form-control" id="validationCustom04"
                     placeholder="Instagram Link" required>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom03">Facebook Link</label>
-                  <input formControlName="password" type="text" class="form-control" id="validationCustom03"
+                  <input formControlName="facebook" type="text" class="form-control" id="validationCustom03"
                     placeholder="Facebook Link" required>
                 </div>
               </div>
@@ -101,12 +103,12 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom04">Twitter Link</label>
-                  <input formControlName="confirmPassword" type="text" class="form-control" id="validationCustom04"
+                  <input formControlName="twitter" type="text" class="form-control" id="validationCustom04"
                     placeholder="Twitter Link" required>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom03">Youtube Link</label>
-                  <input formControlName="password" type="text" class="form-control" id="validationCustom03"
+                  <input formControlName="youtube" type="text" class="form-control" id="validationCustom03"
                     placeholder="Youtube Link" required>
                 </div>
               </div>
@@ -114,7 +116,7 @@
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom04">Website Link</label>
-                  <input formControlName="confirmPassword" type="text" class="form-control" id="validationCustom04"
+                  <input formControlName="website" type="text" class="form-control" id="validationCustom04"
                     placeholder="Website Link" required>
                 </div>
               </div>
@@ -125,13 +127,13 @@
                 <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Summary</mat-label>
-                    <textarea matInput></textarea>
+                    <textarea formControlName="summary" matInput></textarea>
                   </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Hobbies</mat-label>
-                    <textarea matInput></textarea>
+                    <textarea formControlName="hobbies" matInput></textarea>
                   </mat-form-field>
                 </div>
               </div>
@@ -146,10 +148,10 @@
                   </mat-form-field>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
-                  <mat-radio-group aria-label="Select an option">
+                  <mat-radio-group formControlName="foodChoice" aria-label="Select an option">
                     <mat-label class="food-choice">Food Choice</mat-label>
-                    <mat-radio-button value="1" style="margin-right: 1rem;">Veg</mat-radio-button>
-                    <mat-radio-button value="2">Non Vage</mat-radio-button>
+                    <mat-radio-button value="veg" style="margin-right: 1rem;">Veg</mat-radio-button>
+                    <mat-radio-button value="nonVege">Non Vage</mat-radio-button>
                   </mat-radio-group>
                 </div>
               </div>
@@ -157,7 +159,7 @@
               <div class="form-row">
                 <mat-form-field appearance="fill">
                   <mat-label>Favourite dishes</mat-label>
-                  <textarea matInput></textarea>
+                  <textarea formControlName="favouriteDishes" matInput></textarea>
                 </mat-form-field>
               </div>
             </form>

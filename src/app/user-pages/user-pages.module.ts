@@ -16,6 +16,8 @@ import { UserPagesComponent } from './user-pages.component';
 import { UserProfileDetailsComponent } from './user-profile-details/user-profile-details.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RecipeFormComponent } from './recipe-form/recipe-form.component';
+import { BlogsComponent } from './blogs/blogs.component';
+import { BlogFormComponent } from './blog-form/blog-form.component';
 const routes: Routes = [
   { path: '', component: UserPagesComponent },
   { path: 'profile', component: UserProfileComponent }
@@ -23,7 +25,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [UserProfileComponent, UserPagesComponent, UserProfileDetailsComponent, RecipesComponent, RecipeFormComponent],
+  declarations: [UserProfileComponent, UserPagesComponent, UserProfileDetailsComponent, RecipesComponent, RecipeFormComponent, BlogsComponent, BlogFormComponent],
   imports: [
     FormsModule,
     MatTabsModule,

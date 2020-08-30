@@ -13,7 +13,14 @@
             <app-user-profile></app-user-profile>
         </mat-tab>
         <mat-tab label="Timeline"> Content 2 </mat-tab>
-        <mat-tab label="My Blogs"> Content 3 </mat-tab>
+        <mat-tab label="My Blogs">
+            <div *ngIf="isBlogForm; else blogs">
+                <app-blog-form></app-blog-form>
+            </div>
+            <ng-template #blogs>
+                <app-blogs (blogFormEvent)="blogFormEvent($event)"></app-blogs>
+            </ng-template>
+        </mat-tab>
         <mat-tab label="My Recipes">
             <div *ngIf="isRecipeForm; else recipes">
                 <app-recipe-form></app-recipe-form>

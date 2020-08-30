@@ -1,170 +1,66 @@
-<div class="profile-container">
-    <div class="h-100">
-      <div class="row h-100 no-gutters">
-        <div class="h-100 d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-8">
-          <div class="mx-auto app-login-box col-sm-12 col-md-10">
-            <div class="profile-update">
-              <div class="d-flex">
-                <div>
-                  <h4>
-                    <div>Welcome,</div>
-                    <span>It only takes a <span class="text-success">few seconds</span> to Update your profile</span>
-                  </h4>
-                </div>
-                <div class="ml-auto">
-                  <button type="submit" class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
-                  </button>
-                </div>
+<div class="recipe-form-container">
+  <div class="h-100">
+    <div class="row h-100 no-gutters">
+      <div class="h-100 d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-8">
+        <div class="mx-auto app-login-box col-sm-12">
+          <div class="recipe-update">
+            <div class="d-flex">
+              <div class="ml-auto">
+                <button type="submit" (click)="saveRecipe()" class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
+                </button>
               </div>
-              <div class="personal-information">
-                <span>Personal Information <mat-icon (click)="editAbout()" svgIcon="edit"></mat-icon>
-                </span>
+            </div>
+            <form [formGroup]="this.formGroup" class="needs-validation" novalidate (validSubmit)="this.submit()">
+              <div class="about-detail-label">
+                Recipe
               </div>
-              <form [formGroup]="this.formGroup" class="needs-validation" novalidate (validSubmit)="this.submit()">
-                <div class="about-detail-label">
-                  User Info
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom01">Title</label>
+                  <input formControlName="title" type="text" class="form-control" id="validationCustom01"
+                    placeholder="Title" value="Mark" required>
                 </div>
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom01">Name</label>
-                    <input formControlName="name" type="text" class="form-control" id="validationCustom01"
-                      placeholder="First Name" value="Mark" required>
-                  </div>
-  
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom01">Email</label>
-                    <input formControlName="email" type="text" class="form-control" id="validationCustom01"
-                      placeholder="Email" value="Mark" required>
-                  </div>
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustomUsername">Mobile Number</label>
-                    <input formControlName="email" type="email" class="form-control" id="validationCustom02"
-                      placeholder="Mobile Number" aria-describedby="inputGroupPrepend">
-                  </div>
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Select City</mat-label>
-                      <mat-select>
-                        <mat-option value="option">Option</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Select State</mat-label>
-                      <mat-select>
-                        <mat-option value="option">Option</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Select Country</mat-label>
-                      <mat-select>
-                        <mat-option value="option">Option</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom03">Pincode</label>
-                    <input formControlName="password" type="text" class="form-control" id="validationCustom03"
-                      placeholder="Pincode" required>
-                  </div>
-                </div>
-  
-                <div class="about-detail-label">
-                  Social Media Links
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom04">Instagram Link</label>
-                    <input formControlName="confirmPassword" type="text" class="form-control" id="validationCustom04"
-                      placeholder="Instagram Link" required>
-                  </div>
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom03">Facebook Link</label>
-                    <input formControlName="password" type="text" class="form-control" id="validationCustom03"
-                      placeholder="Facebook Link" required>
-                  </div>
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom04">Twitter Link</label>
-                    <input formControlName="confirmPassword" type="text" class="form-control" id="validationCustom04"
-                      placeholder="Twitter Link" required>
-                  </div>
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom03">Youtube Link</label>
-                    <input formControlName="password" type="text" class="form-control" id="validationCustom03"
-                      placeholder="Youtube Link" required>
-                  </div>
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <label for="validationCustom04">Website Link</label>
-                    <input formControlName="confirmPassword" type="text" class="form-control" id="validationCustom04"
-                      placeholder="Website Link" required>
-                  </div>
-                </div>
-                <div class="about-detail-label">
-                  Other Info
-                </div>
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Summary</mat-label>
-                      <textarea matInput></textarea>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Hobbies</mat-label>
-                      <textarea matInput></textarea>
-                    </mat-form-field>
-                  </div>
-                </div>
-  
-                <div class="form-row">
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-form-field appearance="fill">
-                      <mat-label>Food Interest</mat-label>
-                      <mat-select [formControl]="toppings" multiple>
-                        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-                      </mat-select>
-                    </mat-form-field>
-                  </div>
-                  <div class="col-md-6 mb-3 form-group">
-                    <mat-radio-group aria-label="Select an option">
-                      <mat-label class="food-choice">Food Choice</mat-label>
-                      <mat-radio-button value="1" style="margin-right: 1rem;">Veg</mat-radio-button>
-                      <mat-radio-button value="2">Non Vage</mat-radio-button>
-                    </mat-radio-group>
-                  </div>
-                </div>
-  
-                <div class="form-row">
+
+                <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
-                    <mat-label>Favourite dishes</mat-label>
-                    <textarea matInput></textarea>
+                    <mat-label>Description</mat-label>
+                    <textarea formControlName="description" matInput></textarea>
                   </mat-form-field>
                 </div>
-              </form>
-            </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <mat-form-field appearance="fill">
+                    <mat-label>Serve For</mat-label>
+                    <mat-select formControlName="serveFor">
+                      <mat-option value="option">Option</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom01">Preparation Time</label>
+                  <input formControlName="preparationTime" type="text" class="form-control" id="validationCustom01"
+                    placeholder="Preparation Time" value="Mark" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="file" style="margin-right: 1rem">Cover Image</label>
+                  <input type="file" id="file">
+                </div>
+                <div class="col-md-6 mb-3 form-group">
+                  <div class="col-md-6 mb-3 form-group">
+                    <label for="file" style="margin-right: 1rem">Video</label>
+                    <input type="file" id="file">
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
