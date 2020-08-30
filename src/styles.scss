@@ -16,6 +16,15 @@
     font-weight: bold;
 }
 
+.info{
+  font-size: 1rem !important;
+  line-height: 1.5rem;
+  max-height: 4rem;
+  text-overflow: ellipsis;
+  white-space: normal;
+  font-weight: 600;
+}
+
 .page-title{
   font-weight: 600;
 }
@@ -24,5 +33,13 @@
   font-weight: 600;
 }
 
+.card-image{
+    border-radius: 0.25rem 0.25rem 0 0;
+    width: 100%;
+}
+
+.app-main__inner {
+  padding: 15px 25px 0;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

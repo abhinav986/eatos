@@ -4,6 +4,7 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 
 import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
+import { RecipeDetailsComponent } from './components/recipe-details/recipe-details.component';
 const routes: Routes = [
 
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'cusines/:type',
     component: RecipesComponent
+  },
+  {
+    path: 'recipe-details/:id',
+    component: RecipeDetailsComponent
   },
   // {
   //   path: 'recipe/:filterType/:filterValue',
