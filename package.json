@@ -24,7 +24,7 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
-    "@angular/youtube-player": "^10.1.3",
+    "@angular/youtube-player": "^8.2.0",
     "@kolkov/angular-editor": "^0.13.1",
     "@ng-bootstrap/ng-bootstrap": "^4.1.1",
     "@ng-select/ng-select": "^2.16.4",

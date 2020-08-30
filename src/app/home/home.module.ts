@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { YouTubePlayerModule } from '@angular/youtube-player';
+// import { YouTubePlayer } from '@angular/youtube-player';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import { HomeRoutingModule } from './home-routing.module';
@@ -15,7 +15,7 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
   declarations: [HomeComponent, CarouselComponent, CardComponent, ProfileCardComponent, RecipesComponent, RecipeDetailsComponent],
   imports: [
     CommonModule,
-    YouTubePlayerModule,
+  //  YouTubePlayer,
     NgbModule,
     SlickCarouselModule,
     HomeRoutingModule
