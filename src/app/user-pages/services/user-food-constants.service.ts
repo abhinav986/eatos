@@ -15,8 +15,8 @@ export class UserFoodConstantsService {
     foodCusineUrl = this.endPoint.foodCusineUrl;
     foodResturantsUrl = this.endPoint.foodResturantUrl;
 
-     // get all food types eg: Breakfast, Lunch, Dinner etc.
-     getAllFoodTypes() {
+     // get all food category eg: Breakfast, Lunch, Dinner etc.
+     getAllFoodCategory() {
       return this.http.get(this.baseUrl + this.foodTypeUrl);
     }
 

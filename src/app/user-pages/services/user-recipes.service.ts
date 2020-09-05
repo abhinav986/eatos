@@ -8,15 +8,26 @@ import {EndPointURlConstants} from '../../shared/constants/endPoint-url.constant
 export class UserRecipesService {
 
   constructor(private http: HttpClient, private endPoint: EndPointURlConstants
-    ) { }
+    ) {
+      let userData = localStorage.getItem('userData');
+      userData = JSON.parse(userData);
+      this.userId = userData['user']['id'];
+      this.userName = userData['user']['name'];
+    }
 
+    userId: any = '';
+    userName: any = '';
     baseUrl = this.endPoint.baseUrl;
     recipesUrl = this.endPoint.recipesUrl;
     recipesUserUrl = this.endPoint.recipeByUserUrl;
     recipesFilterUrl = this.endPoint.recipeFilterUrl;
+    uploadFileUrl = this.endPoint.uploadFileUrl;
+
 
     // create user recipe
     createUserRecipe(body) {
+      body['user_id'] = this.userId ;
+      body['user_name'] = this.userName ;
       console.log(body);
       // please add user_id
       return this.http.post(this.baseUrl + this.recipesUrl, body);
@@ -29,7 +40,8 @@ export class UserRecipesService {
 
     // update user recipe by recipeId
     updateUserRecipe(recipeId, body) {
-      // body = {_id: '5f3f718c739e923784b2d09f', title: 'Food tour', user_id: userId};
+      body['user_id'] = this.userId ;
+      body['user_name'] = this.userName ;
       return this.http.put(this.baseUrl + this.recipesUrl + '/' + recipeId, body);
     }
 
@@ -46,14 +58,18 @@ export class UserRecipesService {
     }
 
     // get all recipes by userId
-    getUserRecipesByUserId(userId) {
+    getUserRecipesByUserId() {
       // userId = '5f3ea1b8bd61ba2320e5ab51';
-      return this.http.get(this.baseUrl + this.recipesUserUrl + '/' + userId);
+      return this.http.get(this.baseUrl + this.recipesUserUrl + '/' + this.userId);
     }
 
     // filter recipe data by parmeerts
     filterRecipe(body) {
       // let body = {'cusine': 'indian'} or let body = {'course': 'salad'}
       return this.http.post(this.baseUrl + this.recipesFilterUrl, body);
+    }
+
+    uploadImage(form) {
+      return this.http.post(this.baseUrl + this.uploadFileUrl, form);
     }
 }

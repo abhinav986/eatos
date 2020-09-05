@@ -23,7 +23,7 @@ export class BlogFormComponent implements OnInit {
     timing: new FormControl('', Validators.required),
     priceRange: new FormControl('', Validators.required),
     category: new FormControl('', Validators.required),
-    cousin: new FormControl('', Validators.required),
+    cusine: new FormControl('', Validators.required),
     deliveryPartner: new FormControl('', Validators.required),
     otherInfo: new FormControl('', Validators.required),
     overall: new FormControl('', Validators.required),
@@ -38,7 +38,7 @@ export class BlogFormComponent implements OnInit {
   ngOnInit() {
   }
 
-  saveBlog() {
+  submit() {
     const data = {
       title: this.formGroup.controls.title.value,
       description: this.formGroup.controls.description.value,
@@ -51,7 +51,7 @@ export class BlogFormComponent implements OnInit {
       timing: this.formGroup.controls.timing.value,
       priceRange: this.formGroup.controls.priceRange.value,
       category: this.formGroup.controls.category.value,
-      cousin: this.formGroup.controls.cousin.value,
+      cusine: this.formGroup.controls.cusine.value,
       deliveryPartner: this.formGroup.controls.deliveryPartner.value,
       otherInfo: this.formGroup.controls.otherInfo.value,
       overall: this.formGroup.controls.overall.value,

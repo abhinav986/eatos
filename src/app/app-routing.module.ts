@@ -16,7 +16,7 @@ const routes: Routes = [
     children: [
     {path: '', loadChildren: './home/home.module#HomeModule' , data: {extraParameter: ''}},
     {path: 'home', loadChildren: './home/home.module#HomeModule' , data: {extraParameter: ''}},
-    {path: 'user-pages', loadChildren: './user-pages/user-pages.module#UserPagesModule', data: {extraParameter: ''}},
+    {path: 'user', loadChildren: './user-pages/user-pages.module#UserPagesModule', data: {extraParameter: ''}},
   ]
 
   },

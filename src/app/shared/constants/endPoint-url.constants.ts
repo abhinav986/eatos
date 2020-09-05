@@ -5,6 +5,8 @@ export class EndPointURlConstants {
   forgotPasswordUrl = 'auth/forgot-password';
   resetPasswordUrl = 'auth/reset-password';
 
+  uploadFileUrl = 'upload';
+
   userProfileUrl = 'user-profile';
   blogsUrl = 'blog';
   recipesUrl = 'recipe';

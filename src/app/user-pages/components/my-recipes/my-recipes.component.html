@@ -1,0 +1,53 @@
+    <div class="row">
+    <h2 class="col-12 col-md-6" style="font-weight:600;">My Recipes</h2>
+
+    <div class="col-12 col-md-6 recipes-add-button mb-3">
+      <button  type="button" routerLink="/user/create-recipe"
+      class="btn btn-wide  btn-success btn-sm">Create Recipe
+    </button>
+    </div>
+    <div class="col-12 col-md-4 mb-3">
+      <input  type="text" class="form-control" [(ngModel)]="seacrhText"
+      placeholder="Type here to search..." >
+    </div>
+
+    <div class="col-12 col-md-8 mb-3" >
+    <ngb-pagination  class="pr-2 nav-pagination"
+    [(page)]="page"
+    [pageSize]="pageSize"
+    [collectionSize]="recipes.length"
+    [rotate]="true" [ellipses]="false" [boundaryLinks]="true"
+    style="float:right"></ngb-pagination>
+    </div>
+  </div>
+    <div class="main-card mb-2 card" *ngFor="let data of recipes | searchFilter: {title: seacrhText}  | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize;let i=index;">
+      <div class="row">
+
+        <div class="col-md-4 col-12">
+          <img class="card-image" [src]="data.coverImage" />
+          </div>
+          <div class="col-md-8 col-12">
+          <h6 class="title mt-2"> {{data?.title}}</h6>
+          <h6 >{{data?.description}}</h6>
+          <h6 >Type: {{data?.type }} | Serve For: {{data?.serveFor}} </h6>
+          <h6 >Prepration Time: {{data?.preparationTime }} mins | Cokking Time: {{data?.cookingTime}} mins</h6>
+
+          <button class="mr-3" mat-mini-fab color="accent"  placement="top" ngbTooltip="Preview Recipe"
+          routerLink="/recipe-details/{{data._id}}">
+                  <i class="fa fa-eye"></i>
+          </button>
+
+          <button class="mr-3" mat-mini-fab color="accent" placement="top" ngbTooltip="Edit Recipe"
+          routerLink="/user/update-recipe/{{data._id}}">
+                  <i class="fa fa-edit"></i>
+          </button>
+
+          <button mat-mini-fab color="accent" placement="top" ngbTooltip="Delete Recipe"
+          (click)="deleteRecipe(data._id);">
+                 <i class="fa fa-trash"></i>
+           </button>
+
+          </div>
+    </div>
+   </div>
+

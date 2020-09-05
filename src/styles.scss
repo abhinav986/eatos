@@ -41,5 +41,14 @@
 .app-main__inner {
   padding: 15px 25px 0;
 }
+.success-snackbar{
+  background-color: green !important;
+  color: white;
+}
+
+.warning-snackbar{
+  background-color:lightcoral !important;
+  color: white;
+}
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

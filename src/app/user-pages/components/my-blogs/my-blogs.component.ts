@@ -1,11 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-blogs',
-  templateUrl: './blogs.component.html',
-  styleUrls: ['./blogs.component.scss']
+  selector: 'app-my-blogs',
+  templateUrl: './my-blogs.component.html',
+  styleUrls: ['./my-blogs.component.scss']
 })
-export class BlogsComponent implements OnInit {
+export class MyBlogsComponent implements OnInit {
 
   /**
    * blog from event emitter

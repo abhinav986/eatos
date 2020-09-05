@@ -2,10 +2,10 @@
 <div class="row">
 <div class="col-8">
   <h1 style="font-weight:600;">{{recipeDetails?.title}}</h1>
-  <h6 >Its a famous south indian dish</h6>
+  <h6 >{{recipeDetails?.description}}</h6>
   <h6 class="info"><span> <img class="card-image"
     src="../../../../assets/images/chef/chef1.jpg" style="width: 40px;border-radius: 20px;" />
-    Chef {{recipeDetails?.user}}</span></h6>
+    Chef {{recipeDetails?.user_name}}</span></h6>
 </div>
   <div class="col-4">
     <div class="card-body text-right" >
@@ -24,7 +24,13 @@
 <div class="main-card mb-3 card">
 <div class="row">
 <div class="col-8">
-<!-- <img class="card-image" src="../../../../assets/images/food/food1.jpg" /> -->
+<img class="card-image" [src]="recipeDetails?.coverImage" />
+<!-- <div class="video">
+  <video controls  #videoPlayer>
+      <source src="{{recipeDetails?.videoUrl}}" type="video/mp4" />
+      Browser not supported
+  </video>
+</div> -->
 <!-- <youtube-player
   videoId="dQw4w9WgXcQ"
   suggestedQuality="highres"
@@ -40,13 +46,13 @@
       <div class="col-sm-6 ">
         <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
           <i class="fa fa-clock-o icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
-          Preparation Time <br> {{recipeDetails?.prepTime}} mins
+          Preparation Time <br> {{recipeDetails?.preparationTime}} mins
         </button>
       </div>
       <div class="col-sm-6 ">
         <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
           <i class="fa fa-clock-o icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
-          Cooking Time <br> {{recipeDetails?.cookTime}} mins
+          Cooking Time <br> {{recipeDetails?.cookingTime}} mins
         </button>
       </div>
       <div class="col-sm-6 " style="border-right-width: 1px;">
@@ -58,7 +64,7 @@
       <div class="col-sm-6 " style="border-bottom-width: 1px;">
         <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
           <i class="fa fa-users icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
-          Serving For <br> {{recipeDetails?.serve}}
+          Serving For <br> {{recipeDetails?.serveFor}}
         </button>
       </div>
       <div class="col-sm-6 " >
@@ -70,19 +76,11 @@
       <div class="col-sm-6 ">
         <button class="btn-icon-vertical btn-square btn-transition btn btn-outline-link">
           <i class="fa fa-cutlery icon-gradient bg-night-fade btn-icon-wrapper btn-icon-lg mb-2"></i>
-          Course <br> {{recipeDetails?.category}}
+          Category <br> {{recipeDetails?.category}}
         </button>
       </div>
     </div>
   </div>
-
-<!-- <h6 class="info">Preparation time: 30 mins </h6>
-<h6 class="info">Cooking time: 20 mins</h6>
-<h6 class="info">Total Time: 50 mins </h6>
-<h6 class="info">Serve For: 2 </h6>
-<h6 class="info">Cusine: Indian </h6>
-<h6 class="info">Course: Main Course</h6>
-<h6 class="info">For: Breakfast</h6> -->
 </div>
 </div>
 </div>
@@ -102,7 +100,9 @@
     <div class="col-12 mt-3" *ngFor="let data of recipeDetails?.ingredients;">
       <div class="custom-checkbox custom-control custom-control-inline">
         <input type="checkbox" class="custom-control-input">
-        <label  class="custom-control-label info">{{data}}</label></div>
+        <label  class="custom-control-label info">
+          {{data.name}} - {{data.quantity}} {{data.unit}}
+        </label></div>
 
     </div>
    </div>

@@ -1,0 +1,251 @@
+<div class="row mb-2">
+  <h2 class="col-12 col-md-6" style="font-weight:600;">Create Recipe</h2>
+
+  <div class="col-12 col-md-6 recipes-add-button mb-3">
+    <button  type="button" style="float: right;" routerLink="/user/my-recipes"
+    class="btn btn-wide btn-success btn-sm">My Recipes
+  </button>
+  </div>
+</div>
+<div class="recipe-form-container card">
+  <div class="">
+    <div class="row  no-gutters">
+      <div class=" d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-12">
+        <div class="mx-auto app-login-box col-sm-12">
+          <div class="recipe-update mb-4">
+
+            <form [formGroup]="this.formGroup" class="needs-validation" novalidate
+            (validSubmit)="this.submit()">
+            <div class="form-row">
+               <div class="col-md-12  form-group text-right" >
+              <button  type="submit"
+                  class="btn btn-wide btn-pill btn-shadow btn-success btn-sm">Submit
+              </button>
+            </div>
+            </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom01">Title</label>
+                  <input formControlName="title" type="text" class="form-control" id="validationCustom01"
+                    placeholder="Title" value="Mark" required>
+                </div>
+
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom02">Description</label>
+                    <textarea formControlName="description" class="form-control"
+                     id="validationCustom02" placeholder="Description"  required></textarea>
+
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="file" style="margin-right: 1rem">Cover Image</label>
+                  <div class="form-group">
+                      <input type="file" name="image" (change)="fileImageProgress($event)" />
+                  </div>
+
+                  <div class="image-preview mb-3" *ngIf="previewUrl">
+                      <img [src]="previewUrl" height="200" />
+                  </div>
+
+                  <div class="form-group">
+                      <button type="button" class="btn btn-primary"
+                       (click)="uploadImage();" [disabled]="previewUrl==null">Upload</button>
+                  </div>
+              </div>
+                 <div class="col-md-6 mb-3 form-group">
+                  <label for="file" style="margin-right: 1rem">Video</label>
+                  <div class="form-group">
+                      <input type="file" name="video" (change)="fileVideoProgress($event)" />
+                  </div>
+
+                  <div class="image-preview mb-3" *ngIf="previewVideoUrl">
+                    <div class="video">
+                      <video controls  #videoPlayer>
+                          <source src="{{previewVideoUrl}}" type="video/mp4" />
+                          Browser not supported
+                      </video>
+                  </div>
+                  </div>
+
+                  <div class="form-group">
+                      <button type="button" class="btn btn-primary"
+                      (click)="uploadVideo();" [disabled]="previewVideoUrl==null">Upload</button>
+                  </div>
+              </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom03">Preparation Time</label>
+                  <input formControlName="preparationTime" type="text" class="form-control"
+                  id="validationCustom03" placeholder="Preparation Time"  required>
+                </div>
+
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom04">Cooking Time</label>
+                  <input formControlName="cookingTime" type="text" class="form-control"
+                  id="validationCustom04" placeholder="Cooking Time" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom05">Serve For</label>
+                  <input formControlName="serveFor" type="text" class="form-control"
+                  id="validationCustom05" placeholder="Serve For" required>
+                </div>
+
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom06">Type</label>
+
+                  <div class="position-relative form-group">
+                    <div>
+                      <div class="custom-radio custom-control" style="display: inline !important;">
+                        <input type="radio" id="exampleCustomRadio1" name="type" value="Veg"
+                                class="custom-control-input" formControlName="type">
+                                <label for="exampleCustomRadio1"
+                                class="custom-control-label">Veg
+                              </label>
+                      </div>
+                      <div class="custom-radio custom-control ml-2" style="display: inline !important;">
+                        <input type="radio" id="exampleCustomRadio2" name="type" value="Nonveg"
+                                class="custom-control-input" formControlName="type">
+                                <label for="exampleCustomRadio2"
+                                class="custom-control-label">Nonveg
+                              </label>
+                      </div>
+                    </div>
+                </div>
+                </div>
+              </div>
+
+              <div class="form-row">
+
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom07">Category</label>
+                  <select formControlName="category" type="text" class="form-control"
+                  id="validationCustom07">
+                  <option value="None">Select</option>
+                    <option *ngFor="let category of categories;" value="{{category.name}}">
+                      {{category.name}}
+                    </option>
+                  </select>
+                </div>
+
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom08">Course</label>
+                  <select formControlName="course" type="text" class="form-control"
+                  id="validationCustom08">
+                  <option value="None">Select</option>
+                    <option *ngFor="let course of courses;" value="{{course.name}}">
+                      {{course.name}}
+                    </option>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="form-row">
+
+
+                <div class="col-md-6 mb-3 form-group">
+                  <label for="validationCustom09">Cusine</label>
+                  <select formControlName="cusine" type="text" class="form-control"
+                  id="validationCustom09">
+                  <option value="None">Select</option>
+                    <option *ngFor="let cusine of cusines;" value="{{cusine.name}}">
+                      {{cusine.name}}
+                    </option>
+                  </select>
+                </div>
+
+
+
+
+                <!-- <div class="mt-4 d-flex align-items-center">
+                  <div class="ml-auto">
+                    <button  type="submit"
+                            class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
+                    </button>
+                  </div>
+                </div> -->
+
+
+              </div>
+
+
+
+
+            </form>
+          </div>
+
+          <div>
+            <h6 class="info">Ingredients</h6>
+             <!--Ingredients start [ngClass]="{'table-dark': mode}"-->
+  <form [formGroup]="ingredientsTable">
+    <table class="table table-border" >
+      <thead class="text-nowrap">
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Unit</th>
+        <th></th>
+      </thead>
+      <tbody>
+        <ng-container formArrayName="tableRows"
+        *ngFor="let group of getFormControls.controls ; let i=index">
+          <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+            <td>
+              <!-- <mat-form-field>
+                <input matInput type="text" formControlName="name">
+              </mat-form-field> -->
+              <input formControlName="name" type="text" class="form-control"
+              placeholder="Name"  required>
+            </td>
+            <td>
+              <input formControlName="quantity" type="text" class="form-control"
+              placeholder="Quantity"  required>
+            </td>
+
+            <td>
+              <input formControlName="unit" type="text" class="form-control"
+              placeholder="Unit"  required>
+            </td>
+
+            <td>
+              <mat-icon class="delete" (click)="deleteRow(i)">delete_forever</mat-icon>
+              <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+            </td>
+          </tr>
+          <tr *ngIf="!group.get('isEditable').value">
+            <td>
+              {{group.get('name').value}}
+            </td>
+            <td>
+              {{group.get('quantity').value}}
+            </td>
+            <td>
+                {{group.get('unit').value}}
+            </td>
+            <td>
+              <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+    <div class="action-container">
+      <button mat-raised-button type="button" (click)="addRow()">Add row</button>
+      <!-- <button mat-raised-button [disabled]="ingredientsTable.invalid" type="button"
+      (click)="saveIngredientsDetails()">Submit</button> -->
+    </div>
+  </form>
+  <!--Ingredients End-->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

@@ -1,18 +1,18 @@
 
 
 export const menuItems = {
-    myPages: [{title: 'My Profile', icon: '', path: '/my-profile'},
-    {title: 'My Blogs', icon: '', path: '/my-blogs'},
-    {title: 'My Recipes', icon: '', path: '/my-recipes'},
-    {title: 'My Analytics', icon: '', path: '/my-analytics'}],
+    myPages: [{title: 'My Profile', icon: '', path: '/user/my-profile'},
+    {title: 'My Blogs', icon: '', path: '/user/my-blogs'},
+    {title: 'My Recipes', icon: '', path: '/user/my-recipes'},
+    {title: 'My Analytics', icon: '', path: '/user/my-analytics'}],
 
-    blogs : [{title: 'Create Blog', icon: '', path: '/create-blog'},
+    blogs : [{title: 'Create Blog', icon: '', path: '/user/create-blog'},
     {title: 'All Blogs', icon: '', path: '/blog/all'},
     {title: 'Top Bloggers', icon: '', path: '/top-bloggers'},
     {title: 'Trending Blogs', icon: '', path: '/blog/trending'},
     {title: 'My Location', icon: '', path: '/blog/location'}],
 
-    recipes : [{title: 'Create Recipe', icon: '', path: '/create-recipe'},
+    recipes : [{title: 'Create Recipe', icon: '', path: '/user/create-recipe'},
     {title: 'All Recipes', icon: '', path: '/recipe/all'},
     {title: 'Top Chefs', icon: '', path: '/top-chefs'},
     {title: 'Trending Recipe', icon: '', path: '/recipe/trending'},

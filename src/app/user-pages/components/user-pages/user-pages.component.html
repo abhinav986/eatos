@@ -18,7 +18,7 @@
                 <app-blog-form></app-blog-form>
             </div>
             <ng-template #blogs>
-                <app-blogs (blogFormEvent)="blogFormEvent($event)"></app-blogs>
+                <app-my-blogs (blogFormEvent)="blogFormEvent($event)"></app-my-blogs>
             </ng-template>
         </mat-tab>
         <mat-tab label="My Recipes">
@@ -26,7 +26,7 @@
                 <app-recipe-form></app-recipe-form>
             </div>
             <ng-template #recipes>
-                <app-recipes (recipeFormEvent)="recipeFormEvent($event)"></app-recipes>
+                <app-my-recipes (recipeFormEvent)="recipeFormEvent($event)"></app-my-recipes>
             </ng-template>
         </mat-tab>
     </mat-tab-group>
