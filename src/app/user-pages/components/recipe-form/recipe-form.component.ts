@@ -113,7 +113,7 @@ export class RecipeFormComponent implements OnInit {
 
   getRecipeDeatils(id) {
     this.recipeService.getUserRecipeById(id).subscribe((res) => {
-      const data = res.data;
+      const data = res['data'];
       this.id = data._id;
       this.previewUrl = data.coverImage;
       this.previewVideoUrl = data.videoUrl;
@@ -147,19 +147,19 @@ export class RecipeFormComponent implements OnInit {
 
   getAllFoodCategory() {
     this.foodConstantSerivce.getAllFoodCategory().subscribe((res) => {
-      this.categories = res.data;
+      this.categories = res['data'];
     });
   }
 
   getAllFoodCourses() {
     this.foodConstantSerivce.getAllFoodCourses().subscribe((res) => {
-      this.courses = res.data;
+      this.courses = res['data'];
     });
   }
 
   getAllFoodCusines() {
     this.foodConstantSerivce.getAllFoodCusines().subscribe((res) => {
-      this.cusines = res.data;
+      this.cusines = res['data'];
     });
   }
 
@@ -186,9 +186,9 @@ export class RecipeFormComponent implements OnInit {
       body._id = this.id;
     }
     this.recipeService.createUserRecipe(body).subscribe((res) => {
-      const data = res.data;
+      const data = res['data'];
       this.id = data._id;
-      this.snackBar.openSnackBar(res.message, 'success', 'success-snackbar');
+      this.snackBar.openSnackBar(res['message'], 'success', 'success-snackbar');
     }, (err) => {
       this.snackBar.openSnackBar(err.error.message, 'error', 'warning-snackbar');
     });
@@ -216,8 +216,8 @@ uploadImage() {
     const formData = new FormData();
     formData.append('file', this.fileData);
     this.recipeService.uploadImage(formData).subscribe(res => {
-      this.uploadedFilePath = res.path;
-      this.snackBar.openSnackBar(res.message, 'success', 'success-snackbar');
+      this.uploadedFilePath = res['path'];
+      this.snackBar.openSnackBar(res['message'], 'success', 'success-snackbar');
     });
 
 }
@@ -245,8 +245,8 @@ uploadVideo() {
     const formData = new FormData();
     formData.append('file', this.fileVideoData);
     this.recipeService.uploadImage(formData).subscribe(res => {
-      this.uploadedVideoFilePath = res.path;
-      this.snackBar.openSnackBar(res.message, 'success', 'success-snackbar');
+      this.uploadedVideoFilePath = res['path'];
+      this.snackBar.openSnackBar(res['message'], 'success', 'success-snackbar');
     });
 }
 
