@@ -15,7 +15,6 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
 import { UserProfileComponent } from './components/user-profile-form/user-profile.component';
 import { UserPagesComponent } from './components/user-pages/user-pages.component';
-import { UserProfileDetailsComponent } from './components/user-profile-details/user-profile-details.component';
 import { MyRecipesComponent } from './components/my-recipes/my-recipes.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
 import { MyBlogsComponent } from './components/my-blogs/my-blogs.component';
@@ -28,7 +27,7 @@ import { SearchFilterPipe} from './pipes/search-filter.pipe';
 
 
 @NgModule({
-  declarations: [UserProfileComponent, UserPagesComponent, UserProfileDetailsComponent,
+  declarations: [UserProfileComponent, UserPagesComponent,
     MyRecipesComponent, RecipeFormComponent, MyBlogsComponent, BlogFormComponent, SearchFilterPipe],
   imports: [
     UserPagesRoutingModule,

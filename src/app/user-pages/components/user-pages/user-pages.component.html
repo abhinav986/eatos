@@ -10,7 +10,7 @@
     </div>
     <mat-tab-group>
         <mat-tab label="About">
-            <app-user-profile></app-user-profile>
+            <app-user-profile [profilePicUrl]="url" (profilePicEvent)="profilePicEvent($event)"></app-user-profile>
         </mat-tab>
         <mat-tab label="Timeline"> Content 2 </mat-tab>
         <mat-tab label="My Blogs">

@@ -11,10 +11,6 @@
                   <span>It only takes a <span class="text-success">few seconds</span> to Update your profile</span>
                 </h4>
               </div>
-              <div class="ml-auto">
-                <button type="submit" (click)="saveProfile()" class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
-                </button>
-              </div>
             </div>
             <div class="personal-information">
               <span>Personal Information <mat-icon (click)="editAbout()" svgIcon="edit"></mat-icon>
@@ -24,6 +20,11 @@
               <div class="about-detail-label">
                 User Info
               </div>
+              <div class="ml-auto">
+                <button type="submit"
+                  class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
+                </button>
+              </div>
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
                   <label for="validationCustom01">Name</label>
@@ -32,53 +33,54 @@
                 </div>
 
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom01">Email</label>
-                  <input formControlName="email" type="text" class="form-control" id="validationCustom01"
+                  <label for="validationCustom02">Email</label>
+                  <input formControlName="email" type="text" class="form-control" id="validationCustom02"
                     placeholder="Email" value="Mark" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustomUsername">Mobile Number</label>
-                  <input formControlName="mobile" type="Number" class="form-control" id="validationCustom02"
+                  <label for="validationCustom03">Mobile Number</label>
+                  <input formControlName="mobile" type="Number" class="form-control" id="validationCustom03"
                     placeholder="Mobile Number" aria-describedby="inputGroupPrepend">
                 </div>
                 <div class="col-md-6 mb-3 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Select City</mat-label>
-                    <mat-select fromControlName="city">
-                      <mat-option value="option">Option</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                  <label for="validationCustom04">Select City</label>
+                  <select formControlName="city" type="text" class="form-control" id="validationCustom04">
+                    <option value="None">Select</option>
+                    <option *ngFor="let city of cities;" value="{{city.name}}">
+                      {{city.name}}
+                    </option>
+                  </select>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Select State</mat-label>
-                    <mat-select fromControlName="state">
-                      <mat-option value="option">Option</mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                  <label for="validationCustom05">Select State</label>
+                  <select formControlName="state" type="text" class="form-control" id="validationCustom05">
+                    <option value="None">Select</option>
+                    <option *ngFor="let state of states;" value="{{state.name}}">
+                      {{state.name}}
+                    </option>
+                  </select>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Select Country</mat-label>
-                    <mat-select fromControlName="country">
-                      <mat-option *ngFor="let pos of toppingList" [value]="pos">
-                        {{pos}}
-                      </mat-option>
-                    </mat-select>
-                  </mat-form-field>
+                  <label for="validationCustom06">Select Country</label>
+                  <select formControlName="country" type="text" class="form-control" id="validationCustom06">
+                    <option value="None">Select</option>
+                    <option *ngFor="let country of countries;" value="{{country.name}}">
+                      {{country.name}}
+                    </option>
+                  </select>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom03">Pincode</label>
-                  <input formControlName="pincode" type="text" class="form-control" id="validationCustom03"
+                  <label for="validationCustom07">Pincode</label>
+                  <input formControlName="pincode" type="text" class="form-control" id="validationCustom07"
                     placeholder="Pincode" required>
                 </div>
               </div>
@@ -89,34 +91,34 @@
 
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom04">Instagram Link</label>
-                  <input formControlName="instagram" type="text" class="form-control" id="validationCustom04"
+                  <label for="validationCustom08">Instagram Link</label>
+                  <input formControlName="instagram" type="text" class="form-control" id="validationCustom08"
                     placeholder="Instagram Link" required>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom03">Facebook Link</label>
-                  <input formControlName="facebook" type="text" class="form-control" id="validationCustom03"
+                  <label for="validationCustom09">Facebook Link</label>
+                  <input formControlName="facebook" type="text" class="form-control" id="validationCustom09"
                     placeholder="Facebook Link" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom04">Twitter Link</label>
-                  <input formControlName="twitter" type="text" class="form-control" id="validationCustom04"
+                  <label for="validationCustom10">Twitter Link</label>
+                  <input formControlName="twitter" type="text" class="form-control" id="validationCustom10"
                     placeholder="Twitter Link" required>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom03">Youtube Link</label>
-                  <input formControlName="youtube" type="text" class="form-control" id="validationCustom03"
+                  <label for="validationCustom11">Youtube Link</label>
+                  <input formControlName="youtube" type="text" class="form-control" id="validationCustom11"
                     placeholder="Youtube Link" required>
                 </div>
               </div>
 
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <label for="validationCustom04">Website Link</label>
-                  <input formControlName="website" type="text" class="form-control" id="validationCustom04"
+                  <label for="validationCustom12">Website Link</label>
+                  <input formControlName="website" type="text" class="form-control" id="validationCustom12"
                     placeholder="Website Link" required>
                 </div>
               </div>
@@ -125,16 +127,14 @@
               </div>
               <div class="form-row">
                 <div class="col-md-6 mb-3 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Summary</mat-label>
-                    <textarea formControlName="summary" matInput></textarea>
-                  </mat-form-field>
+                  <label for="validationCustom13">Summary</label>
+                    <textarea formControlName="summary" class="form-control"
+                     id="validationCustom13" placeholder="Summary"  required></textarea>
                 </div>
                 <div class="col-md-6 mb-3 form-group">
-                  <mat-form-field appearance="fill">
-                    <mat-label>Hobbies</mat-label>
-                    <textarea formControlName="hobbies" matInput></textarea>
-                  </mat-form-field>
+                  <label for="validationCustom14">Hobbies</label>
+                    <textarea formControlName="hobbies" class="form-control"
+                     id="validationCustom14" placeholder="Hobbies"  required></textarea>
                 </div>
               </div>
 
@@ -142,8 +142,8 @@
                 <div class="col-md-6 mb-3 form-group">
                   <mat-form-field appearance="fill">
                     <mat-label>Food Interest</mat-label>
-                    <mat-select [formControl]="toppings" multiple>
-                      <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    <mat-select formControlName="foodInterest" multiple>
+                      <mat-option *ngFor="let foodInt of foodInterests" [value]="foodInt">{{foodInt}}</mat-option>
                     </mat-select>
                   </mat-form-field>
                 </div>
@@ -157,10 +157,9 @@
               </div>
 
               <div class="form-row">
-                <mat-form-field appearance="fill">
-                  <mat-label>Favourite dishes</mat-label>
-                  <textarea formControlName="favouriteDishes" matInput></textarea>
-                </mat-form-field>
+                <label for="validationCustom15">Favourite dishes</label>
+                    <textarea formControlName="favouriteDishes" class="form-control"
+                     id="validationCustom15" placeholder="Favourite dishes"  required></textarea>
               </div>
             </form>
           </div>

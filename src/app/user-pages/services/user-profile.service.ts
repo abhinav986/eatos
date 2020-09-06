@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+import { ResponseServer } from './user-service.model';
 import {EndPointURlConstants} from '../../shared/constants/endPoint-url.constants';
 @Injectable({
   providedIn: 'root'
@@ -7,8 +10,15 @@ import {EndPointURlConstants} from '../../shared/constants/endPoint-url.constant
 export class UserProfileService {
 
   constructor(private http: HttpClient, private endPoint: EndPointURlConstants
-    ) { }
+    ) {
+      let userData = localStorage.getItem('userData');
+      userData = JSON.parse(userData);
+      this.userId = userData['user']['id'];
+      this.userName = userData['user']['name'];
+    }
 
+    userId: any = '';
+    userName: any = '';
     baseUrl = this.endPoint.baseUrl;
     userProfileUrl = this.endPoint.userProfileUrl;
 
@@ -19,11 +29,11 @@ export class UserProfileService {
       return this.http.post(this.baseUrl + this.userProfileUrl, body);
     }
 
-    updateUserProfile(userId, body) {
+    updateUserProfile(body): Observable<ResponseServer> {
       // userId = '5f3ea1b8bd61ba2320e5ab51';
       // body = {_id: '5f3f718c739e923784b2d09f', name: 'Amit More',
       //  password: '12345678', user_id: userId};
-      return this.http.put(this.baseUrl + this.userProfileUrl + '/' + userId, body);
+      return this.http.put<ResponseServer>(this.baseUrl + this.userProfileUrl + '/' + this.userId, body);
     }
 
 
@@ -31,9 +41,9 @@ export class UserProfileService {
       return this.http.get(this.baseUrl + this.userProfileUrl);
     }
 
-    getUserProfileByUserId(userId) {
+    getUserProfileByUserId(): Observable<ResponseServer> {
       // userId = '5f3ea1b8bd61ba2320e5ab51';
-      return this.http.get(this.baseUrl + this.userProfileUrl + '/' + userId);
+      return this.http.get<ResponseServer>(this.baseUrl + this.userProfileUrl + '/' + this.userId);
     }
 
     deleteUserProfileByUserId(userId) {

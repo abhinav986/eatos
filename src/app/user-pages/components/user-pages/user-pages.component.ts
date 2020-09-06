@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
+import {UserRecipesService} from '../../services/user-recipes.service';
+import {SnackbarService} from '../../../LandingPages/services/snackbar.service';
+import {EndPointURlConstants} from '../../../shared/constants/endPoint-url.constants';
+
 @Component({
   selector: 'app-user-pages',
   templateUrl: './user-pages.component.html',
@@ -22,21 +26,21 @@ export class UserPagesComponent implements OnInit {
    */
   url: any = '../../../assets/images/avatars/1.jpg';
 
-  constructor() { }
+  constructor(private recipeService: UserRecipesService,
+              public snackBar: SnackbarService) { }
 
   ngOnInit() {
   }
 
   onSelectFile(event) { // called each time file input changes
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
+    const formData = new FormData();
+    formData.append('file', event.target.files[0] as File);
+    this.recipeService.uploadImage(formData).subscribe(res => {
+      this.url = res.path;
+      this.snackBar.openSnackBar(res.message, 'success', 'success-snackbar');
+    });
 
-      reader.readAsDataURL(event.target.files[0]); // read file as data url
-
-      reader.onload = (event) => { // called once readAsDataURL is completed
-        this.url = reader.result;
-      };
-    }
+    // save image to user profile data
   }
 
   recipeFormEvent(event) {
@@ -45,5 +49,11 @@ export class UserPagesComponent implements OnInit {
 
   blogFormEvent(event) {
     this.isBlogForm = event;
+  }
+
+  profilePicEvent(event) {
+    if (event) {
+      this.url = event;
+    }
   }
 }

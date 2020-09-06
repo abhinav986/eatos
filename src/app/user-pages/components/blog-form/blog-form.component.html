@@ -1,22 +1,29 @@
-<div class="recipe-form-container">
-    <div class="h-100">
-        <div class="row h-100 no-gutters">
-            <div
-                class="h-100 d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-8">
+<div class="row mb-2">
+    <h2 class="col-12 col-md-6" style="font-weight:600;">Create Blog</h2>
+
+    <div class="col-12 col-md-6 blog-add-button mb-3">
+        <button type="button" style="float: right;" routerLink="/user/my-blogs"
+            class="btn btn-wide btn-success btn-sm">My Blog
+        </button>
+    </div>
+</div>
+<div class="blog-form-container card">
+    <div class="">
+        <div class="row  no-gutters">
+            <div class=" d-md-flex d-sm-block bg-white justify-content-center align-items-center col-md-12 col-lg-12">
                 <div class="mx-auto app-login-box col-sm-12">
-                    <div class="blog-update">
-                        <div class="d-flex">
-                            <div class="ml-auto">
-                                <button type="submit"
-                                 class="btn btn-wide btn-pill btn-shadow btn-secondary btn-lg">Save
-                                </button>
-                            </div>
-                        </div>
+                    <div class="blog-update mb-4">
+
                         <form [formGroup]="this.formGroup" class="needs-validation" novalidate
                             (validSubmit)="this.submit()">
-                            <div class="about-detail-label">
-                                Blog Info
+                            <div class="form-row">
+                                <div class="col-md-12  form-group text-right">
+                                    <button type="submit"
+                                        class="btn btn-wide btn-pill btn-shadow btn-success btn-sm">Submit
+                                    </button>
+                                </div>
                             </div>
+
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
                                     <label for="validationCustom01">Title</label>
@@ -25,28 +32,48 @@
                                 </div>
 
                                 <div class="col-md-6 mb-3 form-group">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Description</mat-label>
-                                        <textarea formControlName="description" matInput></textarea>
-                                    </mat-form-field>
+                                    <label for="validationCustom02">Description</label>
+                                    <textarea formControlName="description" class="form-control" id="validationCustom02"
+                                        placeholder="Description" required></textarea>
+
                                 </div>
                             </div>
-
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
                                     <label for="file" style="margin-right: 1rem">Cover Image</label>
-                                    <input type="file" id="file">
-                                </div>
-                                <div class="col-md-6 mb-3 form-group">
-                                    <div class="col-md-6 mb-3 form-group">
-                                        <label for="file" style="margin-right: 1rem">Video</label>
-                                        <input type="file" id="file">
+                                    <div class="form-group">
+                                        <input type="file" name="image" (change)="fileImageProgress($event)" />
+                                    </div>
+
+                                    <div class="image-preview mb-3" *ngIf="previewUrl">
+                                        <img [src]="previewUrl" height="200" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" (click)="uploadImage();"
+                                            [disabled]="previewUrl==null">Upload</button>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-md-6 mb-3 form-group">
+                                    <label for="file" style="margin-right: 1rem">Video</label>
+                                    <div class="form-group">
+                                        <input type="file" name="video" (change)="fileVideoProgress($event)" />
+                                    </div>
 
-                            <div class="about-detail-label">
-                                Resturant Info
+                                    <div class="image-preview mb-3" *ngIf="previewVideoUrl">
+                                        <div class="video">
+                                            <video controls #videoPlayer>
+                                                <source src="{{previewVideoUrl}}" type="video/mp4" />
+                                                Browser not supported
+                                            </video>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-primary" (click)="uploadVideo();"
+                                            [disabled]="previewVideoUrl==null">Upload</button>
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
@@ -55,10 +82,9 @@
                                         id="validationCustom01" placeholder="Name" value="Mark" required>
                                 </div>
                                 <div class="col-md-6 mb-3 form-group">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Address</mat-label>
-                                        <textarea formControlName="address" matInput></textarea>
-                                    </mat-form-field>
+                                    <label for="validationCustom02">Address</label>
+                                    <textarea formControlName="address" class="form-control" id="validationCustom02"
+                                        placeholder="Address" required></textarea>
                                 </div>
                             </div>
 
@@ -88,9 +114,6 @@
                                 </div>
                             </div>
 
-                            <div class="about-detail-label">
-                                Resturant other Details
-                            </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
                                     <label for="validationCustom01">Timing</label>
@@ -106,48 +129,51 @@
 
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Category</mat-label>
-                                        <mat-select formControlName="category">
-                                            <mat-option value="option">Option</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
+                                    <label for="validationCustom07">Category</label>
+                                    <select formControlName="category" type="text" class="form-control"
+                                        id="validationCustom07">
+                                        <option value="None">Select</option>
+                                        <option *ngFor="let category of categories;" value="{{category.name}}">
+                                            {{category.name}}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6 mb-3 form-group">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Cousin</mat-label>
-                                        <mat-select formControlName="cousin" multiple>
-                                            <mat-option *ngFor="let topping of toppingList" [value]="topping">
-                                                {{topping}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
+                                    <label for="validationCustom09">Cusine</label>
+                                    <select formControlName="cusine" type="text" class="form-control"
+                                        id="validationCustom09">
+                                        <option value="None">Select</option>
+                                        <option *ngFor="let cusine of cusines;" value="{{cusine.name}}">
+                                            {{cusine.name}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Delivery Partner</mat-label>
-                                        <mat-select formControlName="deliveryPartner" multiple>
-                                            <mat-option *ngFor="let topping of toppingList" [value]="topping">
-                                                {{topping}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
+                                    <label for="validationCustom09">Delivery Partner</label>
+                                    <select formControlName="deliveryPartner" type="text" class="form-control"
+                                        id="validationCustom09" multiple>
+                                        <option value="None">Select</option>
+                                        <option *ngFor="let deliveryPart of deliveryPartners;"
+                                            value="{{deliveryPart.name}}">
+                                            {{deliveryPart.name}}
+                                        </option>
+                                    </select>
                                 </div>
                                 <div class="col-md-6 mb-3 form-group">
-                                    <mat-form-field appearance="fill">
-                                        <mat-label>Other Info</mat-label>
-                                        <mat-select formControlName="otherInfo" multiple>
-                                            <mat-option *ngFor="let topping of toppingList" [value]="topping">
-                                                {{topping}}</mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
+                                    <label for="validationCustom09">Other Info</label>
+                                    <select formControlName="otherInfo" type="text" class="form-control"
+                                        id="validationCustom09" multiple>
+                                        <option value="None">Select</option>
+                                        <option *ngFor="let otherInf of otherInfos;" value="{{otherInf.name}}">
+                                            {{otherInf.name}}
+                                        </option>
+                                    </select>
                                 </div>
                             </div>
 
-                            <div class="about-detail-label">
-                                Rating & Review
-                            </div>
                             <div class="form-row">
                                 <div class="col-md-6 mb-3 form-group">
                                     <label for="validationCustom01">Overall</label>
@@ -180,6 +206,146 @@
                                     <input formControlName="hygine" type="text" class="form-control"
                                         id="validationCustom01" placeholder="Hygine" value="Mark" required>
                                 </div>
+                            </div>
+                            <div>
+                                <h6 class="info">Dishes</h6>
+                                <form [formGroup]="dishTable">
+                                    <table class="table table-border">
+                                        <tbody>
+                                            <ng-container formArrayName="tableRows"
+                                                *ngFor="let group of getFormControls.controls ; let i=index">
+                                                <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+                                                    <td>
+                                                        <input formControlName="dishName" type="text" class="form-control"
+                                                            placeholder="Dish Name" required>
+                                                    </td>
+                                                    <td>
+                                                        <input formControlName="dishDescription" type="text"
+                                                            class="form-control" placeholder="Dish Description" required>
+                                                    </td>
+
+                                                    <td>
+                                                        <mat-icon class="delete" (click)="deleteRow(i, 'dish')">delete_forever
+                                                        </mat-icon>
+                                                        <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+                                                    </td>
+                                                </tr>
+                                                <tr *ngIf="!group.get('isEditable').value">
+                                                    <td>
+                                                        {{group.get('dishName').value}}
+                                                    </td>
+                                                    <td>
+                                                        {{group.get('dishDescription').value}}
+                                                    </td>
+                                                    <td>
+                                                        <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+                                                    </td>
+                                                </tr>
+                                            </ng-container>
+                                        </tbody>
+                                    </table>
+                                    <div class="action-container">
+                                        <button mat-raised-button [style.marginBottom.px]="16" type="button" (click)="addRow('dish')">Add row</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3 form-group">
+                                    <label for="validationCustom01">Review</label>
+                                    <input formControlName="review" type="text" class="form-control"
+                                        id="validationCustom01" placeholder="Review" value="Mark" required>
+                                </div>
+                                <div class="col-md-6 mb-3 form-group">
+                                    <label for="validationCustom01">Our Recomendation</label>
+                                    <input formControlName="ourRecomandation" type="text" class="form-control"
+                                        id="validationCustom01" placeholder="Our Recomendation" value="Mark" required>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <h6 class="info">Promo & offers</h6>
+                        <form [formGroup]="offerTable">
+                            <table class="table table-border">
+                                <thead class="text-nowrap">
+                                    <th>Offer</th>
+                                    <th>Valid Upto</th>
+                                    <th></th>
+                                  </thead>
+                                <tbody>
+                                    <ng-container formArrayName="tableRowsOffer"
+                                        *ngFor="let group of getFormControlsOffer.controls ; let i=index">
+                                        <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+                                            <td>
+                                                <input formControlName="offer" type="text" class="form-control"
+                                                    placeholder="Offer" required>
+                                            </td>
+                                            <td>
+                                                <input formControlName="validUpto" type="text"
+                                                    class="form-control" placeholder="Valid Upto" required>
+                                            </td>
+
+                                            <td>
+                                                <mat-icon class="delete" (click)="deleteRow(i, 'offer')">delete_forever
+                                                </mat-icon>
+                                                <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="!group.get('isEditable').value">
+                                            <td>
+                                                {{group.get('offer').value}}
+                                            </td>
+                                            <td>
+                                                {{group.get('validUpto').value}}
+                                            </td>
+                                            <td>
+                                                <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                            <div class="action-container">
+                                <button mat-raised-button [style.marginBottom.px]="16" type="button" (click)="addRow('offer')">Add row</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div>
+                        <h6 class="info">Blog Tag</h6>
+                        <form [formGroup]="tagTable">
+                            <table class="table table-border">
+                                <tbody>
+                                    <ng-container formArrayName="tableRows"
+                                        *ngFor="let group of getFormControlsTag.controls ; let i=index">
+                                        <tr *ngIf="group.get('isEditable').value" [formGroupName]="i">
+                                            <td>
+                                                <input formControlName="tag" type="text" class="form-control"
+                                                    placeholder="Tag" required>
+                                            </td>
+
+                                            <td>
+                                                <mat-icon class="delete" (click)="deleteRow(i, 'tag')">delete_forever
+                                                </mat-icon>
+                                                <mat-icon class="done" (click)="doneRow(group)">done</mat-icon>
+                                            </td>
+                                        </tr>
+                                        <tr *ngIf="!group.get('isEditable').value">
+                                            <td>
+                                                {{group.get('offer').value}}
+                                            </td>
+                                            <td>
+                                                {{group.get('validUpto').value}}
+                                            </td>
+                                            <td>
+                                                <mat-icon class="edit" (click)="editRow(group)">edit</mat-icon>
+                                            </td>
+                                        </tr>
+                                    </ng-container>
+                                </tbody>
+                            </table>
+                            <div class="action-container">
+                                <button mat-raised-button type="button" (click)="addRow('tag')">Add row</button>
                             </div>
                         </form>
                     </div>
